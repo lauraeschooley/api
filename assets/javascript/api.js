@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var topics = ["Big Bang Theory", "Friends", "Hell's Kitchen", "Superstore", "Grey's Anatomy", "This is Us", "Masterchef", "NCIS", "Ellen's Game of Games", ];
+    var topics = ["Big Bang Theory", "Friends", "Hell's Kitchen", "Superstore", "Grey's Anatomy", "This is Us", "Masterchef", "NCIS", "Ellen's Game of Games"];
 
     function buttonRender() {
 
@@ -16,7 +16,11 @@ $(document).ready(function () {
 
             buttonDiv.attr("data-show", topics[i]);
 
+            console.log(topics);
+
             $("#buttonsDiv").append(buttonDiv);
+
+    
         }
 
     };
@@ -64,6 +68,8 @@ $(document).ready(function () {
 
                 $("#gifArea").append(imgDiv);
 
+               // createButton();
+
             };
 
         })
@@ -86,19 +92,35 @@ $(document).ready(function () {
     });
 
 
-    function createButtion() {
-        var searchButton = $("<button"); 
+    function createButton() {
+        var searchButton = $("<button>"); 
 
-        searchButton.addclass("searchShowButton");
+        searchButton.addClass("searchShowButton");
+
+        var newButton = $("#searchBox").val();
+
+        console.log(newButton);
+
+        topics.push(newButton);
 
 
-
+        $("#buttonsDiv").empty();
         
+        console.log(topics);
         buttonRender();
 
 
     }
 
+    $( "#search" ).on("click", function(e) {
+
+        e.preventDefault();
+
+        createButton(); 
+       
+      });
+
+   
 
 
     buttonRender();
